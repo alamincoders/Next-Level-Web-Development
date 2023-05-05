@@ -1,10 +1,10 @@
 class BankAccount {
-  constructor(readonly name: string, private balance: number, public relationWith: string) {}
+  constructor(readonly name: string, private _balance: number, public relationWith: string) {}
   getBalance() {
-    console.log(`${this.name} Balance: ${this.balance}`);
+    console.log(`${this.name} Balance: ${this._balance}`);
   }
   addBalance(a: number): number {
-    const newBalance: number = (this.balance = this.balance + a);
+    const newBalance: number = (this._balance = this._balance + a);
     return newBalance;
   }
 }
