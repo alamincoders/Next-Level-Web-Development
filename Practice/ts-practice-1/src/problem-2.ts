@@ -5,15 +5,12 @@
     > The function should handle arrays of any length and should return the resulting array in the same order as they appear in the first array. */
 
 function CompareArr(arr1: number[], arr2: number[]): number[] {
-  const result: number[] = [];
-
-  for (const el of arr1) {
+  const result: number[] = arr1.filter((num) => arr2.includes(num));
+  return result;
+  /* for (const el of arr1) {
     if (arr2.includes(el)) {
       result.push(el);
-    }
-  }
-
-  return result;
+    } */
 }
 
 const roll1: number[] = [1, 2, 3, 4, 5];
