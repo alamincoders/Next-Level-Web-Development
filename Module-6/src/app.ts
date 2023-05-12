@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const app: Application = express();
 
@@ -14,62 +14,34 @@ app.use(express.urlencoded({ extended: true }));
 // default route
 app.get("/", (req: Request, res: Response) => {
   // inserting test data into database
-  // step1: create interface
-  interface IUser {
-    id: number;
-    name: {
-      firstName: string;
-      middleName?: string;
-      lastName: string;
-    };
-    email: string;
-    phone: number;
-    address: {
-      present: string;
-      permanent: string;
-    };
-    password: string;
-  }
 
+  // step1: create interface
+ 
   // step2. Create a Schema corresponding to the document interface.
-  const userSchema = new Schema<IUser>({
-    id: {
-      type: Number,
-      required: true,
-    },
-    name: {
-      firstName: {
-        type: String,
-        required: true,
+ 
+
+  // step4. database query based on the model
+  const createUserToDB = async () => {
+    const user = new UserModel({
+      id: 524,
+      name: {
+        firstName: "Al Amin",
+
+        lastName: "Khan",
       },
-      middleName: {
-        type: String,
+      email: "alamin@gmail.com",
+      phone: "019062222",
+      address: {
+        present: "Khulna",
+        permanent: "Azampur, Moheshpur, Jhenaidah",
       },
-      lastName: {
-        type: String,
-        required: true,
-      },
-    },
-    email: { type: String, required: true },
-    phone: {
-      type: Number,
-      required: true,
-    },
-    address: {
-      present: {
-        type: String,
-        required: true,
-      },
-      permanent: {
-        type: String,
-        required: true,
-      },
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-  });
+      password: "65s1df5",
+    });
+
+    await user.save();
+    console.log(user);
+  };
+  createUserToDB().catch((err) => console.log(err));
 });
 
 export default app;
