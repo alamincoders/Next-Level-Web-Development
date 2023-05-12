@@ -18,7 +18,7 @@ export const getUserFromDB = async (): Promise<IUser[]> => {
   return users;
 };
 
-/* export const getUserByIdFromDB = async (payload: number | string): Promise<IUser | null> => {
+export const getUserByIdFromDB = async (payload: number | string): Promise<IUser | null> => {
   const user = await UserModel.findOne({ id: payload }, { name: 1, email: 1, password: 1 });
   return user;
-}; */
+};
