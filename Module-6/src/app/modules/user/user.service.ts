@@ -5,7 +5,7 @@ export const createUserToDB = async (data: IUser) => {
   const user = new UserModel(data);
   await user.save();
   if (user) {
-    console.log("post user");
+    console.log(user.fullName());
   }
   return user;
 };

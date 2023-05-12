@@ -13,3 +13,7 @@ export interface IUser {
   };
   password: string;
 }
+
+export interface IUserMethods {
+  fullName(): string;
+}
