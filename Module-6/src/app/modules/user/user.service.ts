@@ -22,3 +22,8 @@ export const getUserByIdFromDB = async (payload: number | string): Promise<IUser
   const user = await UserModel.findOne({ id: payload }, { name: 1, email: 1, password: 1 });
   return user;
 };
+
+export const getUserByAdminsDB = async (): Promise<IUser | null> => {
+  const user = await UserModel.getUserByAdmins();
+  return user;
+};

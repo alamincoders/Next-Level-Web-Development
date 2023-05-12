@@ -1,7 +1,7 @@
 import { Model, Schema, model } from "mongoose";
-import { IUser, IUserMethods } from "./user.interface";
+import { IUser, IUserMethods, UserType } from "./user.interface";
 
-type UserType = Model<IUser, {}, IUserMethods>;
+// type UserType = Model<IUser, {}, IUserMethods>;
 
 const userSchema = new Schema<IUser, UserType, IUserMethods>({
   id: {
@@ -22,6 +22,9 @@ const userSchema = new Schema<IUser, UserType, IUserMethods>({
       required: true,
     },
   },
+  admin: {
+    type: Boolean,
+  },
   email: { type: String, required: true },
   phone: {
     type: String,
@@ -41,6 +44,11 @@ const userSchema = new Schema<IUser, UserType, IUserMethods>({
     type: String,
     required: true,
   },
+});
+
+userSchema.static("getUserByAdmins", async function getUserByAdmins() {
+  const user = await this.find({ admin: true });
+  return user;
 });
 
 userSchema.method("fullName", function fullName() {
