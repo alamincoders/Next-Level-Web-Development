@@ -59,3 +59,4 @@ userSchema.method("fullName", function fullName() {
 const UserModel = model<IUser, UserType>("User", userSchema);
 
 export default UserModel;
+    
