@@ -1,4 +1,4 @@
-# mongoose Practice Aggregation
+# Mongoose Practice Aggregation
 
 ## Example data:
 
