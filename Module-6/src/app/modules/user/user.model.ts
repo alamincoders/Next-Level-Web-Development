@@ -54,7 +54,7 @@ userSchema.static("getUserByAdmins", async function getUserByAdmins() {
 userSchema.method("fullName", function fullName() {
   return this.name.firstName + " " + this.name.lastName;
 });
-
+  
 // step3. Create a Model.
 const UserModel = model<IUser, UserType>("User", userSchema);
 
